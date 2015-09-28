@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="utf-8" />
+        <title>AngularJS</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-sanitize.min.js"></script>
+        <script src="scripts/binding.js"></script>
+    </head>
+    
+    <body ng-controller="MyController">
+        <form>
+            <label for="name">名前：</label>
+            <input id="name" name="name" type="text" ng-model="myName" />
+            <!-- 通常のバインディング -->
+            <div ng-bind="'こんにちは、' + myName + 'さん！'"></div>
+            <!-- one time バインディング -->
+            <div ng-non-bindable>はじめまして、{{::myName}}さん！！</div>
+            
+            <!-- テンプレートのバインド -->
+            <div ng-bind-template="{{myName}}さんは、{{::myName}}さんと仲良しですか？"></div>
+            
+            <textarea id="memo" name="memo" ng-model="myMemo"></textarea>
+            <div ng-bind-html="myMemo"></div>
+            
+            <div ng-pluralize
+                 count="favs.length"
+                 offset="2"
+                 when="{
+                    '0': '「いいね」されていません。',
+                    '1': '{{favs[0]}}さんが「いいね」と言っています。',
+                    '2': '{{favs[0]}}さん、{{favs[1]}}さんが「いいね」と言っています。',
+                    'one': '{{favs[0]}}さん、{{favs[1]}}さん、あと1名が「いいね」と言っています。',
+                    'other': '{{favs[0]}}さん、{{favs[1]}}さん、他{}名が「いいね」と言っています。'
+                }"></div>
+            
+            <a ng-href="{{url}}">Google</a>
+        </form>
+    </body>
+</html>
