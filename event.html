@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Angular JS TIPS</title>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+        <script src="./scripts/event.js"></script>
+    </head>
+    
+    <body ng-controller="MyController">
+        <form>
+            <label for="name">名前：</label>
+            <input id="name" name="name" type="text" ng-model="myName" />
+            <button ng-click="onclick()">送信</button>
+        </form>
+        
+        <div>
+            {{greeting}}
+        </div>
+        
+        <form>
+            <label for="zip">郵便番号：</label>
+            <input type="zip" name="zip" type="text" size="10" ng-model="zip" ng-keypress="onpress($event)" />
+        </form>
+        
+        <div id="outer" ng-click="onclick1()" style="border:solid 1px;padding:5px;">
+            outer
+            <div id="inner" ng-click="onclick2($event)" style="border:solid 1px;padding5px;">
+                inner
+                <div>{{message}}</div>
+            </div>
+        </div>
+    </body>
+</html>
