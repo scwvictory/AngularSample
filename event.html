@@ -32,5 +32,23 @@
                 <div>{{message}}</div>
             </div>
         </div>
+        
+        <form>
+            <select ng-model="season">
+                <option value="">四季を選択</option>
+                <option value="spring">春</option>
+                <option value="summer">夏</option>
+                <option value="autumn">秋</option>
+                <option value="winter">冬</option>
+            </select>
+        </form>
+        
+        <div ng-switch="season">
+            <span ng-switch-when="spring">春はあけぼの</span>
+            <span ng-switch-when="summer">夏は夜</span>
+            <span ng-switch-when="autumn">秋は夕暮れ</span>
+            <span ng-switch-when="winter">冬はつとめて</span>
+            <span ng-switch-default>選択してください</span>
+        </div>
     </body>
 </html>
