@@ -26,13 +26,44 @@
             <div>
                 <label for="passwd">パスワード：</label><br />
                 <input id="passwd" name="passwd" type="password" ng-model="user.passwd" required ng-minlength="6" />
-                
+                       
                 <span ng-show="myForm.passwd.$error.required">
                     パスワードは必須です。
                 </span>
                 <span ng-show="myForm.passwd.$error.minlength">
                     パスワードは6文字以上で入力してください。
                 </span>            
+            </div>
+
+            <div>
+                <label for="name">名前(漢字)：</label><br />
+                <input id="name" name="name" type="text" ng-model="user.name" required ng-minlength="2" ng-maxlength="10" />
+                
+                <span ng-show="myForm.name.$error.required">
+                    名前(漢字)は必須です。
+                </span>
+                <span ng-show="myForm.name.$error.minlength">
+                    名前(漢字)は2文字以上で入力してください。
+                </span> 
+                <span ng-show="myForm.name.$error.maxlength">
+                    名前(漢字)は10文字以内で入力してください。
+                </span> 
+            </div>
+            
+            <div>
+                <label for="birth">誕生日：</label><br />
+                <input id="birth" name="birth" type="date" ng-model="user.birth" required />
+                
+                <span ng-show="myForm.birth.$error.required">
+                    誕生日は必須です。
+                </span>
+                <span ng-show="myForm.birth.$error.datetimelocal">
+                    誕生日の書式が不正です。
+                </span> 
+            </div>        
+            
+            <div>
+                <input type="submit" value="登録" ng-disabled="myForm.$invalid" />
             </div>
         </form>
     </body>
