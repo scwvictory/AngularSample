@@ -5,7 +5,8 @@
         <title>Angular JS TIPS</title>
         <link rel="stylesheet"
               href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+        <script src="./bundles/angular.min.js"></script>
+        <script src="./bundles/angular-messages.min.js"></script>
         <script src="./scripts/form.js"></script>
     </head>
     
@@ -13,14 +14,23 @@
         <form name="myForm" ng-submit="onsubmit()" novalidate>
             <div>
                 <label for="mail">メールアドレス：</label><br />
-                <input id="mail" name="mail" type="email" ng-model="user.mail" required >
+                <input id="mail" name="mail" type="email" ng-model="user.mail" required ng-minlength="3" ng-maxlength="20">
                 
+                <!--
                 <span ng-show="myForm.mail.$error.required">
                     メールアドレスは必須です。
                 </span>
                 <span ng-show="myForm.mail.$error.email">
                     メールアドレスを正しい形式で入力してください。
                 </span>
+                -->
+                
+                <span ng-messages="myForm.mail.$error" ng-messages-multiple>
+                    <span ng-message="required">メールアドレスは必須です。</span>
+                    <span ng-message="minlength">メールアドレスの文字数が少なすぎます。</span>
+                    <span ng-message="maxlength">メールアドレスの文字数が多すぎます。</span>
+                    <span ng-message="email">メールアドレスを正しい形式で入力してください。</span>
+                </span>  
             </div>
             
             <div>
