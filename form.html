@@ -25,12 +25,18 @@
                 </span>
                 -->
                 
+
                 <span ng-messages="myForm.mail.$error" ng-messages-multiple>
+                    <!--
                     <span ng-message="required">メールアドレスは必須です。</span>
                     <span ng-message="minlength">メールアドレスの文字数が少なすぎます。</span>
                     <span ng-message="maxlength">メールアドレスの文字数が多すぎます。</span>
                     <span ng-message="email">メールアドレスを正しい形式で入力してください。</span>
-                </span>  
+                    -->
+                    <span ng-repeat="error in errors">
+                        <span ng-message-exp="error.type">{{error.message}}</span>
+                    </span>
+                </span>
             </div>
             
             <div>
@@ -48,7 +54,7 @@
             <div>
                 <label for="name">名前(漢字)：</label><br />
                 <input id="name" name="name" type="text" ng-model="user.name" required ng-minlength="2" ng-maxlength="10" />
-                
+                <!--
                 <span ng-show="myForm.name.$error.required">
                     名前(漢字)は必須です。
                 </span>
@@ -57,7 +63,11 @@
                 </span> 
                 <span ng-show="myForm.name.$error.maxlength">
                     名前(漢字)は10文字以内で入力してください。
-                </span> 
+                </span>
+                -->
+                <span ng-messages="myForm.name.$error" ng-messages-multiple>
+                    <span ng-messages-include="./templates/messages_template.html"></span>
+                </span>
             </div>
             
             <div>
@@ -78,3 +88,4 @@
         </form>
     </body>
 </html>
+
